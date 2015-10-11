@@ -34,7 +34,8 @@ public class GameController : MonoBehaviour {
 		GAME_WON,
 		GAME_LOST,
 		GAME_TIE,
-		GAME_DISRUPTED
+		GAME_DISRUPTED,
+        GAME_TIMEUP
 	};
 
 	private SmartFox sfs;

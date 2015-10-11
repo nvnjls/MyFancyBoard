@@ -11,7 +11,7 @@ public class TrisGame {
 	private SmartFox sfs;
 	private int whoseTurn;
 	private int myPlayerID;
-
+    private MyTimer timer;
 	public TrisGame() {
 		// Nothing to do
 	}
@@ -23,7 +23,7 @@ public class TrisGame {
 		// Register to SmartFox events
 		sfs = smartFox;
 		sfs.AddEventListener(SFSEvent.EXTENSION_RESPONSE, OnExtensionResponse);
-
+        timer = new MyTimer();
 		// Setup my properties
 		myPlayerID = sfs.MySelf.PlayerId;
 
@@ -53,8 +53,10 @@ public class TrisGame {
 		// Update interface
 		SetTurnMessage();
 
-		// Enable game board
-		EnableBoard(true);
+        timer.setMyTimer();
+
+        // Enable game board
+        EnableBoard(true);
 
 		// Reset interface if this is a restart
 		GameController controller = (GameController)GameObject.Find("Controller").GetComponent<GameController>();
@@ -130,9 +132,9 @@ public class TrisGame {
 
 		// Update interface
 		SetTurnMessage();
-
-		// Enable interface
-		EnableBoard(true);
+        timer.setMyTimer();
+        // Enable interface
+        EnableBoard(true);
 	}
 
 	/**
